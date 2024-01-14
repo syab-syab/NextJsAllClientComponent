@@ -4,6 +4,12 @@ import React, { useState } from 'react'
 // import Image from 'next/image'
 import styles from './page.module.css'
 
+/** ラジオボタン設定 */
+interface Radio {
+  label: string
+  value: string
+}
+
 export default function Home() {
 
   // inputタグの状態管理
@@ -22,43 +28,38 @@ export default function Home() {
   }
 
 
-  // radioボタンの状態管理
-  interface Radio {
-    label: string
-    value: string
-  }
-
-  // 選択中のラジオボタンvalue
-  const [selected, setSelected] = useState<string>("Beef")
-
-  // ラジオボタン切り替えイベント
-  const changeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSelected(e.target.value)
-  }
-
-  // ラジオボタン
-  const radioButtons: Radio[] = [
-    {
-      label: "牛肉",
-      value: "Beef"
-    },
-    {
-      label: "鶏肉",
-      value: "Chicken"
-    },
-    {
-      label: "豚肉",
-      value: "Pork"
-    }
-  ]
-
-
   // textareaの状態管理
   const [textAreaValue, setTextAreaValue] = useState<string>("テキストエリア")
 
   const changeTextArea = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
     setTextAreaValue(e.target.value)
   }
+
+
+  // radioボタンの状態管理
+  const [radioSelected, setRadioSelected] = useState("Beef");
+
+  const changeValue = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setRadioSelected(e.target.value)
+  }
+
+  const radioButtons: Radio[] = [
+    {
+        label: "牛肉",
+        value: "Beef"
+    },
+    {
+        label: "鶏肉",
+        value: "Chicken"
+    },
+    {
+        label: "豚肉",
+        value: "Pork"
+    }
+  ]
+
+
+  // checkbox状態管理
 
   return (
     <main className={styles.main}>
@@ -81,24 +82,24 @@ export default function Home() {
         </select>
       </div>
       <div>
-        {/* radio 後回し */}
-        {/* <p>Radio Button's value = 「{selected}」</p>
-        {
-          radioButtons.map(radio => {
-            <div>
-              <input type="radio" name='meat' value={radio.value} checked={radio.value === selected} onChange={(e) => changeValue(e)} />
-              <label>
-                <span>{radio.label}</span>
-              </label>
-            </div>
-          })
-        } */}
-      </div>
-      <div>
         {/* textarea */}
         <p>Textarea's value = 「{textAreaValue}」</p>
         <textarea onChange={(e) => changeTextArea(e)} value={textAreaValue} />
       </div>
+      <div>
+      <div>Radio button's = 「{radioSelected}」</div>
+      {radioButtons.map(radio => {
+        return (
+          <div key={radio.value}>
+            {/* checked属性に式を定義する */}
+            <input type="radio" name="sweets" id={radio.value} value={radio.value} checked={radio.value === radioSelected} onChange={(e) => changeValue(e)}/>
+            <label htmlFor={radio.value}>
+              <span>{radio.label}</span>
+            </label>
+          </div>
+        )
+      })}
+    </div>
     </main>
   )
 }

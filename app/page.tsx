@@ -3,6 +3,8 @@
 import React, { useState } from 'react'
 // import Image from 'next/image'
 import styles from './page.module.css'
+import useFetch from './_lib/useFetch'
+
 
 /** ラジオボタンの型 */
 interface Radio {
@@ -98,6 +100,11 @@ export default function Home() {
     }
   ];
 
+
+  // カスタムフックテスト
+    const data = useFetch("https://jsonplaceholder.typicode.com/todos")
+    console.log(data)
+
   return (
     <main className={styles.main}>
       <h1>とりあえずすべてをクライアントコンポーネントで作成する</h1>
@@ -161,7 +168,7 @@ export default function Home() {
         {
           items.map(item => {
             return (
-              <div>
+              <div key={item.id}>
                 <input
                   type="checkbox"
                   id={item.item}

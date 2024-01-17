@@ -3,7 +3,8 @@
 import React, { useState } from 'react'
 // import Image from 'next/image'
 import styles from './page.module.css'
-import useFetch from './_lib/useFetch'
+import useFetch from './lib/useFetch'
+// import getData from './lib/getData'
 
 
 /** ラジオボタンの型 */
@@ -19,6 +20,9 @@ interface Check {
 }
 
 export default function Home() {
+
+  // awaitを忘れない
+  // const data = getData()
 
   // inputタグの状態管理
   const [inputValue, setInputValue] = useState<string>("")
@@ -102,8 +106,10 @@ export default function Home() {
 
 
   // カスタムフックテスト
-    const data = useFetch("https://jsonplaceholder.typicode.com/todos")
-    console.log(data)
+  const data = useFetch("https://jsonplaceholder.typicode.com/todos")
+  console.log(data)
+
+
 
   return (
     <main className={styles.main}>
@@ -181,6 +187,16 @@ export default function Home() {
               
             )
           })
+        }
+      </div>
+      <div>
+        {/* fetch */}
+        {/* data の後に ? を付けないとエラーになる */}
+        {/* https://zenn.dev/kantafukazawa/articles/742ae144c2f43e */}
+        {
+          data?.map((d: any) => 
+            <p key={d.id}>{d.title}</p>
+          )
         }
       </div>
     </main>

@@ -5,6 +5,8 @@ import React, { useState } from 'react'
 import styles from './page.module.css'
 import useFetch from './lib/useFetch'
 // import getData from './lib/getData'
+import Link from 'next/link';
+import { useRouter } from 'next/navigation'
 
 
 /** ラジオボタンの型 */
@@ -109,11 +111,15 @@ export default function Home() {
   const data = useFetch("https://jsonplaceholder.typicode.com/todos")
   console.log(data)
 
-
+  const router = useRouter()
 
   return (
     <main className={styles.main}>
       <h1>とりあえずすべてをクライアントコンポーネントで作成する</h1>
+      <Link href="/dynamic-test">
+        ダイナミックルーティングのテスト(next/link)
+      </Link>
+      <button onClick={() => router.push('/dynamic-test')}>ダイナミックルーティングのテスト(useRouter)</button>
       <div>
         {/* input */}
         <p>Input's value = 「{inputValue}」</p>

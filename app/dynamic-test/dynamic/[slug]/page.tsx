@@ -1,4 +1,6 @@
 // ダイナミックルーティング([xxx])
+// "use client"
+
 
 const page = ({ params }: { params: { slug: string } }) => {
   return (
@@ -6,6 +8,6 @@ const page = ({ params }: { params: { slug: string } }) => {
   )
 }
 
-// ex) localhost:3000/123
+// ex) localhost:3000/dynamic-test/dynamic/123
 
 export default page

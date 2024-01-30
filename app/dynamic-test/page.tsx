@@ -1,6 +1,7 @@
 // "use client"
 
 import Link from 'next/link';
+import styles from '@/app/dynamic-test/page.module.css'
 
 // asyncを忘れない
 async function getData() {
@@ -23,7 +24,7 @@ const page = async() => {
   //   console.log(d.title)
   // })
   return (
-    <>
+    <main className={styles.main}>
       <div>
         <Link href="/dynamic-test/dynamic/123">ダイナミックルーティング([xxx])</Link><hr />
         <Link href="/dynamic-test/dynamic2/123/456">ダイナミックルーティング：階層化([...xxx])</Link><hr />
@@ -46,7 +47,7 @@ const page = async() => {
         }
       </div>
       <Link href="/">Topへ戻る</Link>
-    </>
+    </main>
 
   )
 }

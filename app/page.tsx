@@ -24,6 +24,12 @@ export default function Home() {
       <Link href="/dynamic-test">
         ダイナミックルーティングのテスト(next/link)
       </Link>
+      <Link href="server-comp">
+        サーバーコンポーネント色々テスト
+      </Link>
+      <Link href="loading-test">
+        ロード画面テスト
+      </Link>
       <button onClick={() => router.push('/dynamic-test')}>ダイナミックルーティングのテスト(useRouter)</button>
     </main>
   )

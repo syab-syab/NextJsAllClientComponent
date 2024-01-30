@@ -1,0 +1,62 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+}
+
+
+/* Enable hover only on non-touch devices */
+/* (hover: hover) は
+ユーザーがホバーに対応しているデバイスかどうかの判定が行える */
+/* (pointer: fine) は
+ポインティングデバイスであるかで判断できる
+マウスやタッチパネル、ペンタブレット、タッチパッド、トラックボール、ジョイスティックなど.. */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    background: rgba(var(--card-rgb), 0.1);
+    border: 1px solid rgba(var(--card-border-rgb), 0.15);
+  }
+
+  .card:hover span {
+    transform: translateX(4px);
+  }
+}
+
+/* (prefers-reduced-motion) は
+ユーザーが余計な動きを最少化するよう要求したことを検出する
+ */
+@media (prefers-reduced-motion) {
+  .card:hover span {
+    transform: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+}
+
+/* Tablet and Smaller Desktop */
+/* (min-width: 701px) and (max-width: 1120px)は
+701px以上1120px以下
+*/
+@media (min-width: 701px) and (max-width: 1120px) {
+
+}
+
+/* (prefers-color-scheme: dark)は
+ユーザーがシステムに要求したカラーテーマが明色か暗色かを検出する */
+@media (prefers-color-scheme: dark) {
+
+}
+
+/* 
+@keyframes は
+アニメーションの流れに沿ったキーフレーム（または中間地点）のスタイルを定義することによって、
+一連の CSS アニメーションの中間ステップを制御する */
+@keyframes rotate {
+
+}

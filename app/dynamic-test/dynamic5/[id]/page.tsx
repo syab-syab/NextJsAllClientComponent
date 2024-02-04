@@ -1,4 +1,5 @@
 // fetchしたデータを表示するテスト
+import Breadcrumbs from "@/app/ui/breadcrumbs"
 
 // asyncを忘れない
 async function getData(url: string) {
@@ -21,6 +22,20 @@ const page = async({ params }: { params: { id: string } }) => {
   const data = await getData(url)
   return (
     <div>
+      <Breadcrumbs
+        breadcrumbs={[
+          { index: 1, label: 'home' , href: "/"},
+          { index: 2,
+            label: 'dynamic-test',
+            href: "/dynamic-test",
+          },
+          { index: 3,
+            label: `dynamic-test5 - id: ${data.id}`,
+            href: `/dynamic-test/dynamic5/${data.id}`,
+            active: true
+          },
+        ]}
+      />
       <p>User id: {data.userId}</p>
       <p>id: {data.id}</p>
       <p>title: {data.title}</p>

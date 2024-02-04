@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import styles from '@/app/dynamic-test/page.module.css'
+import Breadcrumbs from '../ui/breadcrumbs';
 
 // asyncを忘れない
 async function getData() {
@@ -20,11 +21,19 @@ async function getData() {
 
 const page = async() => {
   const data = await getData()
-  // data.map((d: any) => {
-  //   console.log(d.title)
-  // })
+
   return (
     <main className={styles.main}>
+      <Breadcrumbs
+        breadcrumbs={[
+          { index: 1, label: 'home' , href: "/"},
+          { index: 2,
+            label: 'dynamic-test',
+            href: "/dynamic-test",
+            active: true
+          }
+        ]}
+      />
       <div>
         <Link href="/dynamic-test/dynamic/123">ダイナミックルーティング([xxx])</Link><hr />
         <Link href="/dynamic-test/dynamic2/123/456">ダイナミックルーティング：階層化([...xxx])</Link><hr />

@@ -10,7 +10,11 @@ const page = () => {
         <Breadcrumbs
           breadcrumbs={[
             { index: 1, label: 'home' , href: "/"},
-            { index: 2, label: 'server-comp', href: "/server-comp"}
+            { index: 2,
+              label: 'server-comp',
+              href: "/server-comp",
+              active: true
+            }
           ]}
         />
         <h1>サーバーコンポーネント色々テスト</h1>

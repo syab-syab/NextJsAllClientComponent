@@ -13,6 +13,7 @@ import Textarea from '@/app/component/textarea';
 import RadioButton from '@/app/component/radiobutton';
 import CheckBox from '@/app/component/checkbox';
 import Datalist from '@/app/component/datalist';
+import Breadcrumbs from '../ui/breadcrumbs';
 
 
 /** ラジオボタンの型 */
@@ -121,6 +122,16 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
+      <Breadcrumbs 
+        breadcrumbs={[
+          { index: 1, label: 'home' , href: "/"},
+          { index: 2,
+            label: 'client',
+            href: "/client",
+            active: true
+          }
+        ]}
+      />
       <h1 className={Roboto900.className}>とりあえずすべてをクライアントコンポーネントで作成する</h1>
       <Link href="/">
         ホームへ戻る(next/link)

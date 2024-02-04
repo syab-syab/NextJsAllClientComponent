@@ -1,8 +1,32 @@
-import React from 'react'
+import Link from "next/link"
 
-const Breadcrumbs = () => {
+type Props = {
+  index: number
+  label: string
+  href: string
+
+}
+
+const Breadcrumbs = ({
+  breadcrumbs,
+}: {
+  breadcrumbs: Props[]
+}) => {
   return (
-    <div>B</div>
+    <div>
+      {
+        breadcrumbs.map(breadcrumb => {
+          return (
+            <span key={breadcrumb.index}>
+              <Link href={breadcrumb.href}>
+                {breadcrumb.label}
+              </Link>
+              /
+            </span>
+          )
+        })
+      }
+    </div>
   )
 }
 

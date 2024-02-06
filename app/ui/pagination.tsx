@@ -1,12 +1,21 @@
 import React from 'react'
 
-const Pagination = () => {
+type Props = {
+  data: any
+}
+
+const Pagination = (props: Props) => {
   // データを取ってきて配列にする
   // 配列の要素数を length で数える
   // x刻みで区切る(10とか)
   // 要素数 / x = ページ数
+  console.log(typeof(props.data))
+  console.log(props.data.length)
+
   return (
-    <div>P</div>
+    <>
+      ページ数は{props.data.length / 20}
+    </>
   )
 }
 

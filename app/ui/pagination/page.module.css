@@ -1,0 +1,6 @@
+.page {
+  color: red;
+  display: inline-block;
+  padding: 1rem;
+  border: 1px #000 solid;
+}

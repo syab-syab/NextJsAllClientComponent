@@ -30,6 +30,9 @@ export default function Home() {
       <Link href="loading-test">
         ロード画面テスト
       </Link>
+      <Link href="page-test">
+        ページネーションテスト
+      </Link>
       <button onClick={() => router.push('/dynamic-test')}>ダイナミックルーティングのテスト(useRouter)</button>
     </main>
   )

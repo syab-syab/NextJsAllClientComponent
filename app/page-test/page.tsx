@@ -1,4 +1,4 @@
-import Pagination from "../ui/pagination"
+import Pagination from "@/app/ui/pagination/pagination"
 
 // ここにページャーを入れる
 // サーバーコンポーネントとクライアントコンポーネントどちらでも試す

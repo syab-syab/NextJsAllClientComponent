@@ -1,5 +1,5 @@
 type Props = {
-  data: any
+  data: any[]
 }
 
 const List = (props: Props) => {

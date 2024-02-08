@@ -21,7 +21,6 @@ async function getData() {
 
 const page = async () => {
   const data = await getData()
-
   return (
     <>
             <Breadcrumbs

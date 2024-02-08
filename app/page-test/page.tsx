@@ -1,4 +1,5 @@
 import Pagination from "@/app/ui/pagination/pagination"
+import Breadcrumbs from "@/app/ui/breadcrumbs"
 
 // ここにページャーを入れる
 // サーバーコンポーネントとクライアントコンポーネントどちらでも試す
@@ -23,6 +24,15 @@ const page = async () => {
 
   return (
     <>
+            <Breadcrumbs
+        breadcrumbs={[
+          { index: 1, label: 'home' , href: "/"},
+          { index: 2,
+            label: 'page-test',
+            href: "/page-test",
+          }
+        ]}
+      />
       <Pagination data={data} />
     </>
   )

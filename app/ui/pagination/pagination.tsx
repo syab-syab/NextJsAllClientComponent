@@ -2,15 +2,16 @@
 
 import style from "@/app/ui/pagination/page.module.css"
 import { useState } from "react"
-import List from "@/app/ui/pagination/list"
+import { AllTodos } from "@/app/types/All.types"
+// import List from "@/app/ui/pagination/list"
 
 type Props = {
   data: any
 }
 
-const Pagination = (props: Props) => {
+const Pagination = (props: AllTodos) => {
   // pageNumに格納されているページ数がアクティブになるようにスタイルを整える
-  const [pageNum, setPageNum] = useState<number>(1)
+  const [pageNum, setPageNum] = useState<number>(0)
   // e: React.ChangeEvent<HTMLInputElement> や MouseEvent<HTMLInputElement, MouseEvent> だとエラーが出るのでやむを得ずany
   const handlePageNum = (e: any): void => {
     setPageNum(Number(e.target.value)-1)
@@ -20,13 +21,10 @@ const Pagination = (props: Props) => {
   // 配列の要素数を length で数える
   // x刻みで区切る(10とか)
   // 要素数 / x = ページ数
-  // console.log(typeof(props.data))
-  // console.log(props.data[1])
-  console.log(props.data)
+  // console.log(props.data)
   let lastPage: number = props.data.length / 20
   let pageArr: number[] = []
   for (let i: number = 1; i < lastPage + 1; i ++) {
-    // console.log(i)
     pageArr.push(i)
   }
 
@@ -34,12 +32,10 @@ const Pagination = (props: Props) => {
   // 各ページの数字をクリックして対応するデータを表示していく
   // props.dataの配列を20個ずつに分けたグループにして配列にする
 
-  const dataArrSlice = (arr: any[], num: number): any[] => {
+  const dataArrSlice = (arr: any[], num: number): AllTodos[] => {
     let tmpArray: any[] = []
     while (arr.length > 0) {
-      // tmpArray = arr.splice(0, num)
       tmpArray.push(arr.splice(0, num))
-      // console.log("test", tmpArray)
     }
 
     return tmpArray
@@ -47,25 +43,29 @@ const Pagination = (props: Props) => {
 
   const pageData: any[] = dataArrSlice(props.data, 20)
 
-  console.log(pageData[0])
+  // console.log("pagination.tsx", typeof(pageData))
 
   return (
     <>
       ページ数は{props.data.length / 20}<br />
       現在 = {pageNum}ページ<br />
-      <List data={pageData[pageNum]} />
-      {/* <div className={style.page}>←</div> */}
-      {/* <div className={style.page}>prev</div> */}
-      {/* filterで10件ずつ取り出す */}
       {
-        pageArr.map(p => {
+        pageData[pageNum].map((d: any) => {
           return (
-              <input className={style.page} type="button" key={p} value={p} onClick={(e) => handlePageNum(e)} />
+            <p key={d.id}>{d.id}: {d.title}</p>
           )
         })
       }
-      {/* <div className={style.page}>→</div> */}
-      {/* <div className={style.page}>next</div> */}
+
+      {/* 10件ずつ取り出す */}
+      {
+        pageArr.map(p => {
+          return (
+            <input className={style.page} type="button" key={p} value={p} onClick={(e) => handlePageNum(e)} />
+          )
+        })
+      }
+
     </>
   )
 }

@@ -2,27 +2,17 @@
 
 import style from "@/app/ui/pagination/page.module.css"
 import { useState } from "react"
+import List from "@/app/ui/pagination/list"
 
 type Props = {
   data: any
 }
 
-const List = () => {
-  // filterで10件ずつ取り出す処理を書く
-
-  return (
-    <>
-      <div>List</div>
-    </>
-  )
-}
-
 const Pagination = (props: Props) => {
   // pageNumに格納されているページ数がアクティブになるようにスタイルを整える
   const [pageNum, setPageNum] = useState<number>(1)
-// e: React.ChangeEvent<HTMLInputElement>
-// MouseEvent<HTMLInputElement, MouseEvent>
-  const handlePageNum = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  // e: React.ChangeEvent<HTMLInputElement> や MouseEvent<HTMLInputElement, MouseEvent> だとエラーが出るのでやむを得ずany
+  const handlePageNum = (e: any): void => {
     setPageNum(Number(e.target.value))
   }
 
@@ -45,17 +35,15 @@ const Pagination = (props: Props) => {
   return (
     <>
       ページ数は{props.data.length / 20}<br />
-      pageNum = {pageNum}<br />
+      現在 = {pageNum}ページ<br />
+      <List data={props.data} />
       {/* <div className={style.page}>←</div> */}
       {/* <div className={style.page}>prev</div> */}
       {/* filterで10件ずつ取り出す */}
       {
         pageArr.map(p => {
           return (
-            <>
               <input className={style.page} type="button" key={p} value={p} onClick={(e) => handlePageNum(e)} />
-              {/* <div className={style.page} key={p}>{p}</div> */}
-            </>
           )
         })
       }

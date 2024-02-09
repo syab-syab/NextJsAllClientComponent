@@ -3,17 +3,17 @@
 import style from "@/app/ui/pagination/page.module.css"
 import { useState } from "react"
 import { AllTodos } from "@/app/types/All.types"
-// import List from "@/app/ui/pagination/list"
 
 type Props = {
   data: any
 }
 
-const Pagination = (props: AllTodos) => {
+const Pagination = (props: Props) => {
   // pageNumに格納されているページ数がアクティブになるようにスタイルを整える
   const [pageNum, setPageNum] = useState<number>(0)
   // e: React.ChangeEvent<HTMLInputElement> や MouseEvent<HTMLInputElement, MouseEvent> だとエラーが出るのでやむを得ずany
   const handlePageNum = (e: any): void => {
+    console.log("hanglePageNum")
     setPageNum(Number(e.target.value)-1)
   }
 
@@ -32,10 +32,12 @@ const Pagination = (props: AllTodos) => {
   // 各ページの数字をクリックして対応するデータを表示していく
   // props.dataの配列を20個ずつに分けたグループにして配列にする
 
-  const dataArrSlice = (arr: any[], num: number): AllTodos[] => {
+  const dataArrSlice = (arr: any[], num: number): any[] => {
+    let copyArr: any[] = arr.slice()
     let tmpArray: any[] = []
-    while (arr.length > 0) {
-      tmpArray.push(arr.splice(0, num))
+    while (copyArr.length > 0) {
+      // tmpArray.push(arr.splice(0, num))
+      tmpArray.push(copyArr.splice(0, num))
     }
 
     return tmpArray
@@ -58,8 +60,9 @@ const Pagination = (props: AllTodos) => {
       }
 
       {/* 10件ずつ取り出す */}
+      {/* ↓のボタンが機能しない */}
       {
-        pageArr.map(p => {
+        pageArr.map((p: number) => {
           return (
             <input className={style.page} type="button" key={p} value={p} onClick={(e) => handlePageNum(e)} />
           )

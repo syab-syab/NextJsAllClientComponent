@@ -2,8 +2,8 @@
 
 import Pagination from "@/app/ui/pagination/pagination"
 import Breadcrumbs from "@/app/ui/breadcrumbs"
-// import { AllTodos } from "@/app/types/All.types"
-// import useFetch from "@/app/lib/useFetch"
+import style from "@/app/page-test/page.module.css"
+import useFetch from "@/app/lib/useFetch"
 
 // ここにページャーを入れる
 // サーバーコンポーネントとクライアントコンポーネントどちらでも試す
@@ -12,6 +12,7 @@ import Breadcrumbs from "@/app/ui/breadcrumbs"
 // awaitを忘れない
 const getData = async() => {
 
+  console.log("getData")
   const res = await fetch('https://jsonplaceholder.typicode.com/todos')
 
   if (!res.ok) {

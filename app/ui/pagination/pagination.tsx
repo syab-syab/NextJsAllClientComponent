@@ -3,6 +3,7 @@
 import style from "@/app/ui/pagination/page.module.css"
 import { useState } from "react"
 import { AllTodos } from "@/app/types/All.types"
+import { spawn } from "child_process"
 
 type Props = {
   data: any
@@ -61,8 +62,8 @@ const Pagination = (props: Props) => {
 
   return (
     <>
-      ページ数は{props.data.length / 20}<br />
-      現在 = {pageNum + 1}ページ<br />
+      総ページ数は{props.data.length / 20}<br />
+      現在 = {pageNum+1}ページ<br />
       {
         pageData[pageNum].map((d: any) => {
           return (
@@ -72,11 +73,34 @@ const Pagination = (props: Props) => {
       }
       <input type="button" className={style.page} value="<" onClick={handlePrevPageNum} />
       {/* 20件ずつ取り出す */}
+      {/* 1ページ目と10ページ目は必ず表示 */}
+      {/* 選ばれたページの1つ前と1つ先のページは表示する */}
       {
         pageArr.map((p: number) => {
-          return (
-            <input className={style.page} type="button" key={p} value={p} onClick={(e) => handlePageNum(e)} />
-          )
+          switch(p) {
+            case pageNum + 1: // これが本当のページ数
+            case pageNum: // 前ページ
+            case pageNum + 2: // 次ページ
+            case 1:
+            case 10:
+              return (
+                <input className={style.page} type="button" key={p} value={p} onClick={(e) => handlePageNum(e)} />
+              )
+              break;
+            default:
+              return (
+                ""
+              )
+          }
+
+          // if (p !== (pageNum + 1)) {
+          //   return (
+          //     <span>…</span>
+          //   )
+          // }
+          // return (
+          //   <input className={style.page} type="button" key={p} value={p} onClick={(e) => handlePageNum(e)} />
+          // )
         })
       }
       <input type="button" className={style.page} value=">" onClick={handleNextPageNum} />

@@ -17,6 +17,18 @@ const Pagination = (props: Props) => {
     setPageNum(Number(e.target.value)-1)
   }
 
+  const handlePrevPageNum = (): void => {
+    if (pageNum > 0) {
+      setPageNum(pageNum-1)
+    }
+  }
+
+  const handleNextPageNum = (): void => {
+    if (pageNum < (props.data.length / 20) - 1) {
+      setPageNum(pageNum+1)
+    }
+  }
+
   // データを取ってきて配列にする
   // 配列の要素数を length で数える
   // x刻みで区切る(10とか)
@@ -50,7 +62,7 @@ const Pagination = (props: Props) => {
   return (
     <>
       ページ数は{props.data.length / 20}<br />
-      現在 = {pageNum}ページ<br />
+      現在 = {pageNum + 1}ページ<br />
       {
         pageData[pageNum].map((d: any) => {
           return (
@@ -58,9 +70,8 @@ const Pagination = (props: Props) => {
           )
         })
       }
-
-      {/* 10件ずつ取り出す */}
-      {/* ↓のボタンが機能しない */}
+      <input type="button" className={style.page} value="<" onClick={handlePrevPageNum} />
+      {/* 20件ずつ取り出す */}
       {
         pageArr.map((p: number) => {
           return (
@@ -68,7 +79,7 @@ const Pagination = (props: Props) => {
           )
         })
       }
-
+      <input type="button" className={style.page} value=">" onClick={handleNextPageNum} />
     </>
   )
 }

@@ -36,6 +36,9 @@ export default function Home() {
       <Link href="infinite-scroll">
         無限スクロール
       </Link>
+      <Link href="search-test">
+        検索バー
+      </Link>
       <button onClick={() => router.push('/dynamic-test')}>ダイナミックルーティングのテスト(useRouter)</button>
     </main>
   )

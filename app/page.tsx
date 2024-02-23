@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <h1 className={Roboto900.className}>とりあえずすべてをクライアントコンポーネントで作成する</h1>
+      <h1 className={Roboto900.className}>とりあえず大体のコンポーネントをクライアントコンポーネントで作成する</h1>
       <Link href="/client">
         クライアントコンポーネントの状態管理テスト
       </Link>
@@ -32,6 +32,9 @@ export default function Home() {
       </Link>
       <Link href="page-test">
         ページネーションテスト
+      </Link>
+      <Link href="infinite-scroll">
+        無限スクロール
       </Link>
       <button onClick={() => router.push('/dynamic-test')}>ダイナミックルーティングのテスト(useRouter)</button>
     </main>

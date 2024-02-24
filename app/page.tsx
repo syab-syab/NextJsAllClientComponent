@@ -39,6 +39,9 @@ export default function Home() {
       <Link href="search-test">
         検索バー
       </Link>
+      <Link href="animation-test">
+        アニメーションのテスト
+      </Link>
       <button onClick={() => router.push('/dynamic-test')}>ダイナミックルーティングのテスト(useRouter)</button>
     </main>
   )

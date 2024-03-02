@@ -9,7 +9,7 @@ const page = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <p>test</p>
+        <p className="animation-test">アニメーションのテスト</p>
       </motion.div>
 
   )

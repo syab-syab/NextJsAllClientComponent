@@ -12,16 +12,16 @@ const page = () => {
   return (
     <main>
       <div>
-        <Link href="react-charts">ReactCharts</Link>
+        <Link href="chart/react-charts">ReactCharts(後で)</Link>
       </div>
       <div>
-        <Link href="victory">Victory</Link>
+        <Link href="chart/victory">Victory(後で)</Link>
       </div>
       <div>
-        <Link href="chartjs2">React-chartjs-2</Link>
+        <Link href="chart/chartjs2">React-chartjs-2</Link>
       </div>
       <div>
-        <Link href="recharts">Recharts</Link>
+        <Link href="chart/recharts">Recharts</Link>
       </div>
 
     </main>

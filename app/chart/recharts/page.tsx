@@ -1,5 +1,8 @@
 // import React from 'react'
 
+// 円グラフ
+// 鶏頭図
+
 const page = () => {
   return (
     <>

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/font": "^14.1.4",
     "chart.js": "^4.4.2",
     "framer-motion": "^11.0.6",
     "next": "14.0.4",

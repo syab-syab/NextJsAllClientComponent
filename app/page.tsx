@@ -45,6 +45,9 @@ export default function Home() {
       <Link href="chart">
         グラフライブラリのテスト
       </Link>
+      <Link href="font-test">
+        フォントのテスト
+      </Link>
       <button onClick={() => router.push('/dynamic-test')}>ダイナミックルーティングのテスト(useRouter)</button>
     </main>
   )

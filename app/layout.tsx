@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Next.jsをReact.jsチックに使ってみる',
+  title: 'Next.jsをReact.jsのように使ってみる',
   description: '使い慣れたクライアントコンポーネントの方が良い',
 }
 

@@ -60,9 +60,11 @@ const Pagination = (props: Props) => {
 
   // console.log("pagination.tsx", typeof(pageData))
 
+  const allPageLength: number = props.data.length / 20
+
   return (
     <>
-      総ページ数は{props.data.length / 20}<br />
+      総ページ数は{allPageLength}<br />
       現在 = {pageNum+1}ページ<br />
       {
         pageData[pageNum].map((d: any) => {
@@ -71,11 +73,16 @@ const Pagination = (props: Props) => {
           )
         })
       }
-      <input type="button" className={style.page} value="<" onClick={handlePrevPageNum} />
+      {
+        pageNum+1 === 1 ?
+        <span></span> :
+        <input type="button" className={style.page} value="◀" onClick={handlePrevPageNum} />
+      }
+      {/* <input type="button" className={style.page} value="◀" onClick={handlePrevPageNum} /> */}
       {/* 20件ずつ取り出す */}
       {/* 1ページ目と10ページ目は必ず表示 */}
       {/* 選ばれたページの1つ前と1つ先のページは表示する */}
-      {
+      {/* {
         pageArr.map((p: number) => {
           switch(p) {
             case pageNum + 1: // これが本当のページ数
@@ -92,18 +99,14 @@ const Pagination = (props: Props) => {
                 ""
               )
           }
-
-          // if (p !== (pageNum + 1)) {
-          //   return (
-          //     <span>…</span>
-          //   )
-          // }
-          // return (
-          //   <input className={style.page} type="button" key={p} value={p} onClick={(e) => handlePageNum(e)} />
-          // )
         })
+      } */}
+      {
+        pageNum+1 === allPageLength ?
+        <span></span> :
+        <input type="button" className={style.page} value="▶" onClick={handleNextPageNum} />
       }
-      <input type="button" className={style.page} value=">" onClick={handleNextPageNum} />
+      
     </>
   )
 }
